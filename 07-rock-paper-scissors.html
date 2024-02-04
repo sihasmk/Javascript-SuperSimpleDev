@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Rock Paper Scissors!</title>
+    <style></style>
+  </head>
+  <body>
+    <p>Rock Paper Scissors</p>
+    <button onclick="playGame('rock');">Rock</button>
+
+    <button onclick="playGame('paper');">Paper</button>
+
+    <button onclick="playGame('scissor');">Scissors</button>
+
+    <p>Click here to see the final version of the project.</p>
+    <script>
+      function playGame(playerMove) {
+        num = Math.random() * 10000;
+
+        /* num<10000/3=>rock */
+        /* num<20000/3=>paper */
+        /* else, scissor */
+
+        if (playerMove === "scissor") {
+          if (num <= 3333.3333) {
+            alert("You picked scissor. Computer picked rock. You lose!");
+          } else if (num <= 6666.6666) {
+            alert("You picked scissor. Computer picked paper. You win!");
+          } else {
+            alert("You picked scissor. Computer picked scissor. It\s a tie!");
+          }
+        } else if (playerMove === "paper") {
+          if (num <= 3333.3333) {
+            alert("You picked paper. Computer picked rock. You win!");
+          } else if (num <= 6666.6666) {
+            alert("You picked paper. Computer picked paper. It's a tie!");
+          } else {
+            alert("You picked paper. Computer picked scissor. You lose!");
+          }
+        } else {
+          if (num <= 10000 / 3) {
+            alert("You picked rock. Computer picked rock. It's a tie!");
+          } else if (num <= 20000 / 3) {
+            alert("You picked rock. Computer picked paper. You lose!");
+          } else {
+            alert("You picked rock. Computer picked scissor. You win!");
+          }
+        }
+
+        return;
+      }
+    </script>
+  </body>
+</html>

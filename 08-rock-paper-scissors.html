@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Rock Paper Scissors!</title>
+    <style></style>
+  </head>
+  <body>
+    <p>Rock Paper Scissors</p>
+    <button onclick="playGame('rock');">Rock</button>
+
+    <button onclick="playGame('paper');">Paper</button>
+
+    <button onclick="playGame('scissor');">Scissors</button>
+
+    <button
+      onclick="
+      score.Losses = 0;
+      score.Wins = 0;
+      score.Ties = 0;
+      localStorage.removeItem('score');
+    "
+    >
+      Reset Score
+    </button>
+
+    <p>Click here to see the final version of the project.</p>
+    <script>
+      /* use of default operator */
+      let score = JSON.parse(localStorage.getItem("score")) || {
+        Wins: 0,
+        Losses: 0,
+        Ties: 0,
+      };
+
+      function playGame(playerMove) {
+        pc_choice = getCompChoice();
+        result = "";
+
+        if (playerMove === "scissor") {
+          if (pc_choice === "rock") {
+            result = "You Lose!";
+          } else if (pc_choice === "paper") {
+            result = "You Win!";
+          } else {
+            result = "Tie!";
+          }
+        } else if (playerMove === "paper") {
+          if (pc_choice === "rock") {
+            result = "You Win!";
+          } else if (pc_choice === "paper") {
+            result = "Tie!";
+          } else {
+            result = "You Lose!";
+          }
+        } else {
+          if (pc_choice === "rock") {
+            result = "Tie!";
+          } else if (pc_choice === "paper") {
+            result = "You Lose!";
+          } else {
+            result = "You Win!";
+          }
+        }
+
+        if (result === "You Win!") {
+          score.Wins++;
+        } else if (result === "You Lose!") {
+          score.Losses++;
+        } else {
+          score.Ties++;
+        }
+
+        localStorage.setItem("score", JSON.stringify(score));
+
+        alert(
+          "You picked " +
+            playerMove +
+            ". Computer picked " +
+            pc_choice +
+            ". " +
+            result +
+            "\nWins: " +
+            score.Wins +
+            ", Losses: " +
+            score.Losses +
+            ", Ties: " +
+            score.Ties
+        );
+      }
+
+      function getCompChoice() {
+        num = Math.random() * 10000;
+
+        /* num<10000/3=>rock */
+        /* num<20000/3=>paper */
+        /* else, scissor */
+
+        if (num < 10000 / 3) {
+          return "rock";
+        } else if (num < 20000 / 3) {
+          return "paper";
+        }
+        return "scissor";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+.name-input {
+  padding: 6px;
+  font-size: 15px;
+}
+
+.date-input {
+  padding: 6px;
+  font-size: 15px;
+}
+
+.add-button {
+  background-color: green;
+  border: none;
+  color: white;
+  /* padding: 10px; */
+}
+
+.input-grid {
+  margin-bottom: 10px;
+}
+
+.todo-grid,
+.input-grid {
+  display: grid;
+  grid-template-columns: 200px 154px 84px;
+  row-gap: 10px;
+  align-items: center;
+  column-gap: 6px;
+}
+
+.input-grid {
+  align-items: stretch;
+}
+
+.delete-button {
+  background-color: darkred;
+  border: none;
+  color: white;
+  padding: 10px;
+}
